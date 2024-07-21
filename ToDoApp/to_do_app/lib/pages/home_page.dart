@@ -9,28 +9,40 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //text controller
+  final _controller = TextEditingController();
 
   //list of todo task
-
   List toDoList = [
-    ["Cooking",false,],
-    ["Swimming",false,],
-
+    ["Cooking", false],
+    ["Swimming", false],
   ];
 
-  void checkBoxChanged(bool? value, int index){
-
-    setState((){
+  void checkBoxChanged(bool? value, int index) {
+    setState(() {
       toDoList[index][1] = !toDoList[index][1];
     });
   }
 
-  void createNewTask(){
+  void saveNewTask() {
+    setState(() {
+      toDoList.add([_controller.text, false]);
+      _controller.clear();
+    });
+    Navigator.of(context).pop();
+  }
+
+  void createNewTask() {
     showDialog(
       context: context,
-      builder: (context){
-      return DialogBox();
-    });
+      builder: (context) {
+        return DialogBox(
+          controller: _controller,
+          onSave: saveNewTask,
+          onCancel: () => Navigator.of(context).pop(),
+        );
+      },
+    );
   }
 
   @override
@@ -44,25 +56,25 @@ class _HomePageState extends State<HomePage> {
           child: const Text('To Do'),
         ),
       ),
-
-    floatingActionButton: FloatingActionButton(
-      onPressed: createNewTask,
-      child: Icon(Icons.add),
-    ),
-
-
-      body: ListView.builder(
-
-        itemCount: toDoList.length,
-        itemBuilder: (context,index){
-          return ToDoTile(
-            taskName: toDoList[index][0],
-            taskCompleted: toDoList[index][1],
-            onChanged: (value) => checkBoxChanged(value,index), );
-        }
-
-      )
-      
+      floatingActionButton: FloatingActionButton(
+        onPressed: createNewTask,
+        child: const Icon(Icons.add),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Expanded(
+          child: ListView.builder(
+            itemCount: toDoList.length,
+            itemBuilder: (context, index) {
+              return ToDoTile(
+                taskName: toDoList[index][0],
+                taskCompleted: toDoList[index][1],
+                onChanged: (value) => checkBoxChanged(value, index),
+              );
+            },
+          ),
+        ),
+      ),
     );
   }
 }
