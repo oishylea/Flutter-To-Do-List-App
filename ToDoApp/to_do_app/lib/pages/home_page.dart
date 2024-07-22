@@ -87,6 +87,42 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void editTask(int index) {
+    final TextEditingController _controller = TextEditingController(text: db.toDoList[index][0]);
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Edit Task'),
+          content: TextField(
+            controller: _controller,
+            decoration: const InputDecoration(labelText: 'Task Name'),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                final updatedTaskName = _controller.text;
+                if (updatedTaskName.isNotEmpty) {
+                  setState(() {
+                    db.toDoList[index][0] = updatedTaskName;
+                  });
+                  Navigator.of(context).pop();
+                  db.updateDataBase();
+                }
+              },
+              child: const Text('Save'),
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('Cancel'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   void _filterTasks(String filterType) {
     setState(() {
       if (filterType == 'A-Z') {
@@ -94,7 +130,7 @@ class _HomePageState extends State<HomePage> {
       } else if (filterType == 'Done/Not Done') {
         db.toDoList.sort((a, b) => a[1].toString().compareTo(b[1].toString()));
       } else if (filterType == 'Latest') {
-        db.toDoList.sort((b, a) => a[2].compareTo(b[2]));
+        db.toDoList.sort((a, b) => b[2].compareTo(a[2]));
       }
     });
   }
@@ -110,7 +146,7 @@ class _HomePageState extends State<HomePage> {
           PopupMenuButton<String>(
             onSelected: _filterTasks,
             itemBuilder: (BuildContext context) {
-              return {'A-Z', 'Latest','Done/Not Done'}.map((String choice) {
+              return {'A-Z', 'Latest', 'Done/Not Done'}.map((String choice) {
                 return PopupMenuItem<String>(
                   value: choice,
                   child: Text(choice),
@@ -135,6 +171,7 @@ class _HomePageState extends State<HomePage> {
               taskCompleted: db.toDoList[index][1],
               onChanged: (value) => checkBoxChanged(value, index),
               deleteFunction: (int) => deleteTask(index),
+              editFunction: (int) => editTask(index), index: index, // Pass the edit function
             );
           },
         ),
