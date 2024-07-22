@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
 
   void saveNewTask() {
     setState(() {
-      db.toDoList.add([_controller.text, false]);
+      db.toDoList.add([_controller.text, false, DateTime.now()]);
       _controller.clear();
     });
     Navigator.of(context).pop();
@@ -91,16 +91,12 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       if (filterType == 'A-Z') {
         db.toDoList.sort((a, b) => a[0].compareTo(b[0]));
-      }  else if (filterType == 'Latest'){
-      db.toDoList = db.toDoList.reversed.toList();
-      }
-      
-      else if (filterType == 'Not Done/Done') {
-        // Sort by completion status: true (done) first, then false (not done)
+      } else if (filterType == 'Done/Not Done') {
         db.toDoList.sort((a, b) => a[1].toString().compareTo(b[1].toString()));
+      } else if (filterType == 'Latest') {
+        db.toDoList.sort((b, a) => a[2].compareTo(b[2]));
       }
     });
-    print(db.toDoList); // Print the list to debug
   }
 
   @override
@@ -114,7 +110,7 @@ class _HomePageState extends State<HomePage> {
           PopupMenuButton<String>(
             onSelected: _filterTasks,
             itemBuilder: (BuildContext context) {
-              return {'A-Z', 'Latest','Not Done/Done'}.map((String choice) {
+              return {'A-Z', 'Latest','Done/Not Done'}.map((String choice) {
                 return PopupMenuItem<String>(
                   value: choice,
                   child: Text(choice),
