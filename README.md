@@ -1,6 +1,6 @@
 # Flutter Task Management App 💻💖
 
-A simple and intuitive task management app built with ❤️ using the Flutter framework during the semester break 2023/2024.
+A simple and intuitive task management app using the Flutter framework during the semester break 2023/2024.
 
 ## Features 🌟
 
@@ -25,8 +25,18 @@ p/s : I'm developing this app for fun and it's my first time developing an app. 
 |------|------|--------|
 | 2023-07-20 | Listing features to be implemented and build the main interface | ✅ Completed |
 | 2023-07-21 | Develop task listing with checkbox functionality | ✅ Completed |
-| 2023-07-21 | Implement task deletion with confirmation dialog | ⏳ In Progress |
+| 2023-07-21 | Implement task deletion with confirmation dialog | ✅ Completed |
 | 2023-07-21 | Add task management features (mark as complete, edit, reopen) | ⏳ In Progress |
 | 2023-07-30 | Ensure responsive design for Android and iOS | ⏳ In Progress |
 | 2023-07-30 | Document app features and usage | ⏳ In Progress |
 | 2023-08-30 | Prepare app for release on app stores | ❌ Not Started |
+
+## App Preview 📸
+
+Here's a preview of the main page of the app:
+
+<div>
+  <img src="ToDoApp/output/main_page.png" alt="Main Page" style="height: 600px; width: auto; margin-right: 10px;" />
+  <img src="ToDoApp/output/add_task.png" alt="Add Task" style="height: 600px; width: auto; margin-right: 10px;" />
+  <img src="ToDoApp/output/delete_task.png" alt="Delete Task" style="height: 600px; width: auto;" />
+</div>
