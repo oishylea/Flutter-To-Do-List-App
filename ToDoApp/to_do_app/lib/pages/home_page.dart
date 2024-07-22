@@ -11,9 +11,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  //reference the hive box
+  // Reference the hive box
   final _mybox = Hive.box('mybox');
-  //text controller
+  // Text controller
   final _controller = TextEditingController();
 
   ToDoDatabase db = ToDoDatabase();
@@ -87,16 +87,43 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void _filterTasks(String filterType) {
+    setState(() {
+      if (filterType == 'A-Z') {
+        db.toDoList.sort((a, b) => a[0].compareTo(b[0]));
+      }  else if (filterType == 'Latest'){
+      db.toDoList = db.toDoList.reversed.toList();
+      }
+      
+      else if (filterType == 'Not Done/Done') {
+        // Sort by completion status: true (done) first, then false (not done)
+        db.toDoList.sort((a, b) => a[1].toString().compareTo(b[1].toString()));
+      }
+    });
+    print(db.toDoList); // Print the list to debug
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 184, 140, 203),
       appBar: AppBar(
         centerTitle: true,
-        title: Align(
-          alignment: Alignment.center,
-          child: const Text('To Do'),
-        ),
+        title: const Text('To Do'),
+        actions: [
+          PopupMenuButton<String>(
+            onSelected: _filterTasks,
+            itemBuilder: (BuildContext context) {
+              return {'A-Z', 'Latest','Not Done/Done'}.map((String choice) {
+                return PopupMenuItem<String>(
+                  value: choice,
+                  child: Text(choice),
+                );
+              }).toList();
+            },
+            icon: const Icon(Icons.filter_list),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: createNewTask,
@@ -104,18 +131,16 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Expanded(
-          child: ListView.builder(
-            itemCount: db.toDoList.length,
-            itemBuilder: (context, index) {
-              return ToDoTile(
-                taskName: db.toDoList[index][0],
-                taskCompleted: db.toDoList[index][1],
-                onChanged: (value) => checkBoxChanged(value, index),
-                deleteFunction: (int) => deleteTask(index),
-              );
-            },
-          ),
+        child: ListView.builder(
+          itemCount: db.toDoList.length,
+          itemBuilder: (context, index) {
+            return ToDoTile(
+              taskName: db.toDoList[index][0],
+              taskCompleted: db.toDoList[index][1],
+              onChanged: (value) => checkBoxChanged(value, index),
+              deleteFunction: (int) => deleteTask(index),
+            );
+          },
         ),
       ),
     );
