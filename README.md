@@ -27,8 +27,8 @@ p/s : I'm developing this app for fun and it's my first time developing an app. 
 | 2023-07-21 | Develop task listing with checkbox functionality | ✅ Completed |
 | 2023-07-21 | Implement task deletion with confirmation dialog | ✅ Completed |
 | 2023-07-22 | Add task management features (mark as complete, edit, reopen) | ✅ Completed  |
-| 2023-07-30 | Ensure responsive design for Android and iOS | ⏳ In Progress |
-| 2023-07-30 | Document app features and usage | ❌ Not Started  |
+| 2023-07-31 | Hosting on firebase| ✅ Completed  |
+
 
 ## App Preview 📸
 
