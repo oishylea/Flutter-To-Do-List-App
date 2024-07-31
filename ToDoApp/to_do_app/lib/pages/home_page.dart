@@ -127,7 +127,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       if (filterType == 'A-Z') {
         db.toDoList.sort((a, b) => a[0].compareTo(b[0]));
-      } else if (filterType == 'Done/Not Done') {
+      } else if (filterType == 'Not Done / Done') {
         db.toDoList.sort((a, b) => a[1].toString().compareTo(b[1].toString()));
       } else if (filterType == 'Latest') {
         db.toDoList.sort((a, b) => b[2].compareTo(a[2]));
@@ -138,44 +138,52 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 184, 140, 203),
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('To Do'),
-        actions: [
-          PopupMenuButton<String>(
-            onSelected: _filterTasks,
-            itemBuilder: (BuildContext context) {
-              return {'A-Z', 'Latest', 'Done/Not Done'}.map((String choice) {
-                return PopupMenuItem<String>(
-                  value: choice,
-                  child: Text(choice),
-                );
-              }).toList();
-            },
-            icon: const Icon(Icons.filter_list),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: createNewTask,
-        child: const Icon(Icons.add),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-          itemCount: db.toDoList.length,
-          itemBuilder: (context, index) {
-            return ToDoTile(
-              taskName: db.toDoList[index][0],
-              taskCompleted: db.toDoList[index][1],
-              onChanged: (value) => checkBoxChanged(value, index),
-              deleteFunction: (int) => deleteTask(index),
-              editFunction: (int) => editTask(index), index: index, // Pass the edit function
+  appBar: AppBar(
+    centerTitle: true,
+    title: const Text('To Do List'),
+    actions: [
+      PopupMenuButton<String>(
+        onSelected: _filterTasks,
+        itemBuilder: (BuildContext context) {
+          return {'A-Z', 'Not Done / Done'}.map((String choice) {
+            return PopupMenuItem<String>(
+              value: choice,
+              child: Text(choice),
             );
-          },
-        ),
+          }).toList();
+        },
+        icon: const Icon(Icons.filter_list),
       ),
-    );
+    ],
+  ),
+  body: Container(
+    decoration: const BoxDecoration(
+      image: DecorationImage(
+        image: AssetImage('lib/images/wallpaper.jpg'),
+        fit: BoxFit.cover,
+      ),
+    ),
+    child: Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: ListView.builder(
+        itemCount: db.toDoList.length,
+        itemBuilder: (context, index) {
+          return ToDoTile(
+            taskName: db.toDoList[index][0],
+            taskCompleted: db.toDoList[index][1],
+            onChanged: (value) => checkBoxChanged(value, index),
+            deleteFunction: (int) => deleteTask(index),
+            editFunction: (int) => editTask(index),
+            index: index,
+          );
+        },
+      ),
+    ),
+  ),
+  floatingActionButton: FloatingActionButton(
+    onPressed: createNewTask,
+    child: const Icon(Icons.add),
+  ),
+);
   }
 }

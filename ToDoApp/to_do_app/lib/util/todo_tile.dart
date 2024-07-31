@@ -30,7 +30,7 @@ class ToDoTile extends StatelessWidget {
             SlidableAction(
               onPressed: (context) => editFunction(index), // Pass index for editing
               icon: Icons.edit,
-              backgroundColor: const Color.fromARGB(255, 243, 236, 33),
+              backgroundColor: const Color.fromARGB(255, 247, 243, 142),
               borderRadius: BorderRadius.circular(24),
             ),
           ],
@@ -41,7 +41,7 @@ class ToDoTile extends StatelessWidget {
             SlidableAction(
               onPressed: (context) => deleteFunction(index), // Pass index for deletion
               icon: Icons.delete,
-              backgroundColor: Colors.red,
+              backgroundColor: const Color.fromARGB(255, 248, 111, 101),
               borderRadius: BorderRadius.circular(24),
             ),
           ],

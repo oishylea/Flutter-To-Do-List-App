@@ -11,6 +11,8 @@ class ToDoDatabase{
     toDoList = [
       ["Cook dinner",false],
       ["Swimming class",false],
+      ["Mini Project",true],
+      ["Laundry", false],
     ];
   }
 
