@@ -35,7 +35,7 @@ p/s : I'm developing this app for fun and it's my first time developing an app. 
 
 ## App Preview 📸
 
-Here's a preview of the app:
+Here are some previews of the app:
 
 <div>
   <img src="ToDoApp/output/homepagetodo.png" alt="Main Page" style="height: 450px; width: auto; margin-right: 10px;" />
