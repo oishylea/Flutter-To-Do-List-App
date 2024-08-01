@@ -1,3 +1,4 @@
+
 # Flutter Task Management App 💻💖
 
 A simple and intuitive task management app using the Flutter framework during the semester break 2023/2024.
@@ -42,3 +43,7 @@ Here are some previews of the app:
   <img src="ToDoApp/output/taskpagetodo.png" alt="Add Task" style="height: 450px; width: auto; margin-right: 10px;" />
   <img src="ToDoApp/output/modifytodo.png" alt="Delete Task" style="height: 450px; width: auto;" />
 </div>
+
+<br>
+
+![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Foishylea%2FFlutter-To-Do-List-App&labelColor=%23d9e3f0&countColor=%23697689&style=flat)
