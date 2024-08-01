@@ -2,8 +2,8 @@
 
 A simple and intuitive task management app using the Flutter framework during the semester break 2023/2024.
 
-## Hosting Link
-[https://todolist-9a14f.web.app/]
+## Hosting Link 🗃️
+Click here to open [To Do List App](https://todolist-9a14f.web.app/)
 
 ## Features 🌟
 
