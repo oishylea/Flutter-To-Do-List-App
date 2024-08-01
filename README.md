@@ -38,7 +38,7 @@ p/s : I'm developing this app for fun and it's my first time developing an app. 
 Here's a preview of the app:
 
 <div>
-  <img src="ToDoApp/output/main_page.png" alt="Main Page" style="height: 450px; width: auto; margin-right: 10px;" />
-  <img src="ToDoApp/output/add_task.png" alt="Add Task" style="height: 450px; width: auto; margin-right: 10px;" />
-  <img src="ToDoApp/output/delete_task.png" alt="Delete Task" style="height: 450px; width: auto;" />
+  <img src="ToDoApp/output/homepagetodo.png" alt="Main Page" style="height: 450px; width: auto; margin-right: 10px;" />
+  <img src="ToDoApp/output/taskpagetodo.png" alt="Add Task" style="height: 450px; width: auto; margin-right: 10px;" />
+  <img src="ToDoApp/output/modifytodo.png" alt="Delete Task" style="height: 450px; width: auto;" />
 </div>
