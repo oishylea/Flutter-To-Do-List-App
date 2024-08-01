@@ -2,11 +2,14 @@
 
 A simple and intuitive task management app using the Flutter framework during the semester break 2023/2024.
 
+## Hosting Link
+[https://todolist-9a14f.web.app/]
+
 ## Features 🌟
 
-- **Task Creation**: Add new tasks with a title, description, and due date. 📝
+- **Task Creation**: Add new tasks. 📝
 - **Task Listing**: View all your tasks in an organized list, with the ability to sort and filter. 📋
-- **Task Deletion**: Delete tasks you no longer need, with a confirmation dialog. 🗑️
+- **Task Deletion**: Delete tasks that no longer needed, with a confirmation dialog. 🗑️
 - **Task Management**: Mark tasks as completed, edit task details, or reopen completed tasks. ✅
 - **Responsive Design**: The app is designed to work seamlessly on both Android and iOS devices. 📱
 
